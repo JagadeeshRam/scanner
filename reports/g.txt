@@ -1,0 +1,24 @@
+                                       "Severity"
+CVE-2013-4235                           Low
+CVE-2013-4235                           Low
+CVE-2016-10228                           Negligible
+CVE-2016-10228                           Negligible
+CVE-2016-2781                           Low
+CVE-2017-11164                           Negligible
+CVE-2018-1000654                           Negligible
+CVE-2019-18276                           Low
+CVE-2019-20838                           Low
+CVE-2019-25013                           Low
+CVE-2019-25013                           Low
+CVE-2020-14155                           Negligible
+CVE-2020-27618                           Low
+CVE-2020-27618                           Low
+CVE-2020-29562                           Low
+CVE-2020-29562                           Low
+CVE-2020-6096                           Low
+CVE-2020-6096                           Low
+CVE-2021-27645                           Low
+CVE-2021-27645                           Low
+CVE-2021-3326                           Low
+CVE-2021-3326                           Low
+

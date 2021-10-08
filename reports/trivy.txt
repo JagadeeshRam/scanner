@@ -1,0 +1,112 @@
+2021-10-07T22:45:18.781+0530	[34mINFO[0m	Detected OS: ubuntu
+2021-10-07T22:45:18.781+0530	[34mINFO[0m	Detecting Ubuntu vulnerabilities...
+2021-10-07T22:45:18.781+0530	[34mINFO[0m	Number of language-specific files: 0
+
+ubuntu:latest (ubuntu 20.04)
+============================
+Total: 22 (UNKNOWN: 0, LOW: 22, MEDIUM: 0, HIGH: 0, CRITICAL: 0)
+
++------------+------------------+----------+--------------------------+---------------+-----------------------------------------+
+|  LIBRARY   | VULNERABILITY ID | SEVERITY |    INSTALLED VERSION     | FIXED VERSION |                  TITLE                  |
++------------+------------------+----------+--------------------------+---------------+-----------------------------------------+
+| bash       | CVE-2019-18276   | LOW      | 5.0-6ubuntu1.1           |               | bash: when effective UID is not         |
+|            |                  |          |                          |               | equal to its real UID the...            |
+|            |                  |          |                          |               | -->avd.aquasec.com/nvd/cve-2019-18276   |
++------------+------------------+          +--------------------------+---------------+-----------------------------------------+
+| coreutils  | CVE-2016-2781    |          | 8.30-3ubuntu2            |               | coreutils: Non-privileged               |
+|            |                  |          |                          |               | session can escape to the               |
+|            |                  |          |                          |               | parent session in chroot                |
+|            |                  |          |                          |               | -->avd.aquasec.com/nvd/cve-2016-2781    |
++------------+------------------+          +--------------------------+---------------+-----------------------------------------+
+| libc-bin   | CVE-2016-10228   |          | 2.31-0ubuntu9.2          |               | glibc: iconv program can hang           |
+|            |                  |          |                          |               | when invoked with the -c option         |
+|            |                  |          |                          |               | -->avd.aquasec.com/nvd/cve-2016-10228   |
++            +------------------+          +                          +---------------+-----------------------------------------+
+|            | CVE-2019-25013   |          |                          |               | glibc: buffer over-read in              |
+|            |                  |          |                          |               | iconv when processing invalid           |
+|            |                  |          |                          |               | multi-byte input sequences in...        |
+|            |                  |          |                          |               | -->avd.aquasec.com/nvd/cve-2019-25013   |
++            +------------------+          +                          +---------------+-----------------------------------------+
+|            | CVE-2020-27618   |          |                          |               | glibc: iconv when processing            |
+|            |                  |          |                          |               | invalid multi-byte input                |
+|            |                  |          |                          |               | sequences fails to advance the...       |
+|            |                  |          |                          |               | -->avd.aquasec.com/nvd/cve-2020-27618   |
++            +------------------+          +                          +---------------+-----------------------------------------+
+|            | CVE-2020-29562   |          |                          |               | glibc: assertion failure in iconv       |
+|            |                  |          |                          |               | when converting invalid UCS4            |
+|            |                  |          |                          |               | -->avd.aquasec.com/nvd/cve-2020-29562   |
++            +------------------+          +                          +---------------+-----------------------------------------+
+|            | CVE-2020-6096    |          |                          |               | glibc: signed comparison                |
+|            |                  |          |                          |               | vulnerability in the                    |
+|            |                  |          |                          |               | ARMv7 memcpy function                   |
+|            |                  |          |                          |               | -->avd.aquasec.com/nvd/cve-2020-6096    |
++            +------------------+          +                          +---------------+-----------------------------------------+
+|            | CVE-2021-27645   |          |                          |               | glibc: Use-after-free in                |
+|            |                  |          |                          |               | addgetnetgrentX function                |
+|            |                  |          |                          |               | in netgroupcache.c                      |
+|            |                  |          |                          |               | -->avd.aquasec.com/nvd/cve-2021-27645   |
++            +------------------+          +                          +---------------+-----------------------------------------+
+|            | CVE-2021-3326    |          |                          |               | glibc: Assertion failure in             |
+|            |                  |          |                          |               | ISO-2022-JP-3 gconv module              |
+|            |                  |          |                          |               | related to combining characters         |
+|            |                  |          |                          |               | -->avd.aquasec.com/nvd/cve-2021-3326    |
++------------+------------------+          +                          +---------------+-----------------------------------------+
+| libc6      | CVE-2016-10228   |          |                          |               | glibc: iconv program can hang           |
+|            |                  |          |                          |               | when invoked with the -c option         |
+|            |                  |          |                          |               | -->avd.aquasec.com/nvd/cve-2016-10228   |
++            +------------------+          +                          +---------------+-----------------------------------------+
+|            | CVE-2019-25013   |          |                          |               | glibc: buffer over-read in              |
+|            |                  |          |                          |               | iconv when processing invalid           |
+|            |                  |          |                          |               | multi-byte input sequences in...        |
+|            |                  |          |                          |               | -->avd.aquasec.com/nvd/cve-2019-25013   |
++            +------------------+          +                          +---------------+-----------------------------------------+
+|            | CVE-2020-27618   |          |                          |               | glibc: iconv when processing            |
+|            |                  |          |                          |               | invalid multi-byte input                |
+|            |                  |          |                          |               | sequences fails to advance the...       |
+|            |                  |          |                          |               | -->avd.aquasec.com/nvd/cve-2020-27618   |
++            +------------------+          +                          +---------------+-----------------------------------------+
+|            | CVE-2020-29562   |          |                          |               | glibc: assertion failure in iconv       |
+|            |                  |          |                          |               | when converting invalid UCS4            |
+|            |                  |          |                          |               | -->avd.aquasec.com/nvd/cve-2020-29562   |
++            +------------------+          +                          +---------------+-----------------------------------------+
+|            | CVE-2020-6096    |          |                          |               | glibc: signed comparison                |
+|            |                  |          |                          |               | vulnerability in the                    |
+|            |                  |          |                          |               | ARMv7 memcpy function                   |
+|            |                  |          |                          |               | -->avd.aquasec.com/nvd/cve-2020-6096    |
++            +------------------+          +                          +---------------+-----------------------------------------+
+|            | CVE-2021-27645   |          |                          |               | glibc: Use-after-free in                |
+|            |                  |          |                          |               | addgetnetgrentX function                |
+|            |                  |          |                          |               | in netgroupcache.c                      |
+|            |                  |          |                          |               | -->avd.aquasec.com/nvd/cve-2021-27645   |
++            +------------------+          +                          +---------------+-----------------------------------------+
+|            | CVE-2021-3326    |          |                          |               | glibc: Assertion failure in             |
+|            |                  |          |                          |               | ISO-2022-JP-3 gconv module              |
+|            |                  |          |                          |               | related to combining characters         |
+|            |                  |          |                          |               | -->avd.aquasec.com/nvd/cve-2021-3326    |
++------------+------------------+          +--------------------------+---------------+-----------------------------------------+
+| libpcre3   | CVE-2017-11164   |          | 2:8.39-12build1          |               | pcre: OP_KETRMAX feature in the         |
+|            |                  |          |                          |               | match function in pcre_exec.c           |
+|            |                  |          |                          |               | -->avd.aquasec.com/nvd/cve-2017-11164   |
++            +------------------+          +                          +---------------+-----------------------------------------+
+|            | CVE-2019-20838   |          |                          |               | pcre: buffer over-read in               |
+|            |                  |          |                          |               | JIT when UTF is disabled                |
+|            |                  |          |                          |               | -->avd.aquasec.com/nvd/cve-2019-20838   |
++            +------------------+          +                          +---------------+-----------------------------------------+
+|            | CVE-2020-14155   |          |                          |               | pcre: integer overflow in libpcre       |
+|            |                  |          |                          |               | -->avd.aquasec.com/nvd/cve-2020-14155   |
++------------+------------------+          +--------------------------+---------------+-----------------------------------------+
+| libtasn1-6 | CVE-2018-1000654 |          | 4.16.0-2                 |               | libtasn1: Infinite loop in              |
+|            |                  |          |                          |               | _asn1_expand_object_id(ptree)           |
+|            |                  |          |                          |               | leads to memory exhaustion              |
+|            |                  |          |                          |               | -->avd.aquasec.com/nvd/cve-2018-1000654 |
++------------+------------------+          +--------------------------+---------------+-----------------------------------------+
+| login      | CVE-2013-4235    |          | 1:4.8.1-1ubuntu5.20.04.1 |               | shadow-utils: TOCTOU race               |
+|            |                  |          |                          |               | conditions by copying and               |
+|            |                  |          |                          |               | removing directory trees                |
+|            |                  |          |                          |               | -->avd.aquasec.com/nvd/cve-2013-4235    |
++------------+                  +          +                          +---------------+                                         +
+| passwd     |                  |          |                          |               |                                         |
+|            |                  |          |                          |               |                                         |
+|            |                  |          |                          |               |                                         |
+|            |                  |          |                          |               |                                         |
++------------+------------------+----------+--------------------------+---------------+-----------------------------------------+
