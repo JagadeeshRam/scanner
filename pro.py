@@ -43,7 +43,7 @@ def ubuntu():
         os.system("clear")
     elif c==4:
         cmd = os.system("sudo apt-get install wget apt-transport-https gnupg lsb-release && wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -  && echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list && sudo apt-get update && sudo apt-get install trivy")
-         print( " We need \"go 1.16\" for this tool ")
+        print( " We need \"go 1.16\" for this tool ")
             #cmd =os.system("sudo apt install golang-go")
         os.chdir("..")
         cmd =os.system("sudo git clone https://github.com/quay/clair.git")
@@ -101,7 +101,8 @@ def clair():
     os.chdir("clair")
     cmd=os.system(" sudo make local-dev-up-with-quay")
     hpath=os.chdir("..")
-    gpath=os.chdir("go/bin")
+    os.chdir("go/bin")
+    gpath=os.getcwd()
     iname=str(input("Enter image name:"))
     order1=" ./clairctl -D report {} > clair.txt".format(iname)
     cmd=os.system(order1)
@@ -113,6 +114,7 @@ def grype():
     cmd=os.system(order)
 def combine():
     source=os.getcwd()
+    print(source)
     cmd=os.system("mkdir reports")
     os.chdir("reports")
     dest=os.getcwd()
@@ -126,7 +128,8 @@ def combine():
     cmd=os.system(order3)
     cmd=shutil.move(source+"/g.txt",dest)
 
-    os.chdir("..")
+    a=os.chdir("..")
+    print(a)
     os.chdir("clair")
     cmd=os.system(" sudo make local-dev-up-with-quay")
     hpath=os.chdir("..")
@@ -136,7 +139,7 @@ def combine():
     bpath=os.getcwd()
     source1=bpath+"/clair.txt"
     cmd=shutil.move(source1,dest)
-    os.chdir("..")
+    os.chdir(a)
     os.chdir("clair")
     cmd=os.system(" sudo make local-dev-down")
 
@@ -156,6 +159,7 @@ while True:
     print(result)
     print("\n ")
     dem()
+    path=os.getcwd()
     a=int(input("Select your option : "))
     if a==1:
         
@@ -176,6 +180,7 @@ while True:
         if  b==3:
             exit()
     if a==2:
+        os.chdir(path)
         print(""" 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
                                                                                     Tools
