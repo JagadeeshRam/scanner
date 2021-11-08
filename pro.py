@@ -32,11 +32,13 @@ def ubuntu():
         cmd = os.system("sudo apt-get install wget apt-transport-https gnupg lsb-release && wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -  && echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list && sudo apt-get update && sudo apt-get install trivy")
         os.system("clear")
     elif c==2:
+        path=os.getcwd()
         print( " We need \"go 1.16\" for this tool ")
             #cmd =os.system("sudo apt install golang-go")
         os.chdir("..")
         cmd =os.system("sudo git clone https://github.com/quay/clair.git")
         cmd=os.system("cd | GO111MODULE=on go get github.com/quay/clair/v4/cmd/clairctl@latest ")
+        os.chdir(path)
         os.system("clear")
     elif c==3:
         cmd=os.system("sudo curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sudo sh -s -- -b /usr/local/bin ")
@@ -72,21 +74,25 @@ def debian():
         os.system("clear")
     elif d==2:
         print( " We need \"go 1.16\" for this tool ")
+        path=os.getcwd()
         os.chdir("..")
         #cmd =os.system("sudo apt install golang-go")
         cmd =os.system("sudo git clone https://github.com/quay/clair.git ")
         cmd=os.system("cd | GO111MODULE=on go get github.com/quay/clair/v4/cmd/clairctl@latest ")
+        os.chdir(path)
         os.system("clear")
     elif d==3:
         cmd=os.system("sudo curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sudo sh -s -- -b /usr/local/bin ")
         os.system("clear")
     elif d==4:
+         path=os.getcwd()
          cmd = os.system("wget https://github.com/aquasecurity/trivy/releases/download/v0.19.2/trivy_0.19.2_Linux-64bit.deb && sudo dpkg -i trivy_0.19.2_Linux-64bit.deb")
          print( " We need \"go 1.16\" for this tool ")
             #cmd =os.system("sudo apt install golang-go")
          os.chdir("..")
          cmd =os.system("sudo git clone https://github.com/quay/clair.git")
          cmd=os.system("cd | GO111MODULE=on go get github.com/quay/clair/v4/cmd/clairctl@latest ")
+         os.chdir(path)
          cmd=os.system("sudo curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sudo sh -s -- -b /usr/local/bin ")
     elif d==5:
         exit()
@@ -96,18 +102,25 @@ def trivy():
     order="trivy image {} > trivy.txt".format(iname)
     cmd=os.system(order)
 def clair():
-    path=os.getcwd()
-    os.chdir("..")
-    os.chdir("clair")
-    cmd=os.system(" sudo make local-dev-up-with-quay")
-    hpath=os.chdir("..")
-    os.chdir("go/bin")
-    gpath=os.getcwd()
-    iname=str(input("Enter image name:"))
-    order1=" ./clairctl -D report {} > clair.txt".format(iname)
-    cmd=os.system(order1)
-    source1=gpath+"/clair.txt"
-    cmd=shutil.move(source1,path)
+    try:
+        path=os.getcwd()
+        os.chdir("..")
+        os.chdir("clair")
+        cmd=os.system(" sudo make local-dev-up-with-quay")
+        hpath=os.chdir("..")
+        os.chdir("go/bin")
+        gpath=os.getcwd()
+        iname=str(input("Enter image name:"))
+        order1=" ./clairctl -D report {} > clair.txt".format(iname)
+        cmd=os.system(order1)
+        source1=gpath+"/clair.txt"
+        cmd=shutil.move(source1,path)
+    except:
+        os.chdir("..")
+        os.chdir("clair")
+        cmd=os.system("sudo systemctl start docker")
+        cmd=os.system("sudo docker-compose up -d indexer-quay")
+        
 def grype():
     iname=str(input("Enter image name:"))
     order="grype {}  >grype.txt | awk '{print $1}'".format(iname)
@@ -127,21 +140,27 @@ def combine():
     order3=" grype {} -o template -t  csv.tmpl >g.txt".format(iname)
     cmd=os.system(order3)
     cmd=shutil.move(source+"/g.txt",dest)
-
-    a=os.chdir("..")
-    print(a)
-    os.chdir("clair")
-    cmd=os.system(" sudo make local-dev-up-with-quay")
-    hpath=os.chdir("..")
-    cmd=os.chdir("go/bin")
-    order1=" ./clairctl -D report {} > clair.txt".format(iname)
-    cmd=os.system(order1)
-    bpath=os.getcwd()
-    source1=bpath+"/clair.txt"
-    cmd=shutil.move(source1,dest)
-    os.chdir(a)
-    os.chdir("clair")
-    cmd=os.system(" sudo make local-dev-down")
+    try:
+        
+        a=os.chdir("..")
+        print(a)
+        os.chdir("clair")
+        cmd=os.system(" sudo make local-dev-up-with-quay")
+        hpath=os.chdir("..")
+        cmd=os.chdir("go/bin")
+        order1=" ./clairctl -D report {} > clair.txt".format(iname)
+        cmd=os.system(order1)
+        bpath=os.getcwd()
+        source1=bpath+"/clair.txt"
+        cmd=shutil.move(source1,dest)
+        os.chdir(a)
+        os.chdir("clair")
+        cmd=os.system(" sudo make local-dev-down")
+    except:
+        os.chdir("..")
+        os.chdir("clair")
+        cmd=os.system("sudo systemctl start docker")
+        cmd=os.system("sudo docker-compose up -d indexer-quay")
 
     os.chdir(dest)
     cmd=os.system("awk '/CVE/{print $3,$4;}' trivy.txt | sed 's/|/ /g' |sed 's/ //g' > cvet.txt")
@@ -155,7 +174,7 @@ def combine():
 
 
 while True:
-    result = pyfiglet.figlet_format("Doc Scanner", font = "slant"  )
+    result = pyfiglet.figlet_format("Cloud  Scanner", font = "slant"  )
     print(result)
     print("\n ")
     dem()
