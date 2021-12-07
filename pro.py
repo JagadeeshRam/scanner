@@ -122,7 +122,7 @@ def debian():
     elif d==5:
         exit()
                     
-def trivy():
+def trivy(path):
     iname=str(input("Enter image name:"))
     fname=str(input("Enter output file name:"))
     if os.path.isfile(fname):
@@ -191,7 +191,7 @@ def clair(path):
     if b==3:
         dem()
         
-def grype():
+def grype(path):
     iname=str(input("Enter image name:"))
     fname=str(input("Enter output file name:"))
     if os.path.isfile(fname):
