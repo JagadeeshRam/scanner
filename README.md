@@ -16,5 +16,5 @@ Software Requirements:
 $ pip install -r requirements.txt
 ```
 ```console
-$ python3 pro.py
+$ python3 main.py
 ```
