@@ -18,12 +18,3 @@ $ pip install -r requirements.txt
 ```console
 $ python3 pro.py
 ```
-# or
-  You can aslo directly run by these comands
-```console
-$ cd dist
-```
-```console
-$ ./pro
-```
-
